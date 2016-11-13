@@ -1,0 +1,18 @@
+version: '2'
+services:
+  unifi_controller:
+    image: jacobalberty/unifi
+    container_name: unifi_controller
+    network_mode: "bridge"
+    ports:
+      - "8443:8443"
+      - "8080:8080"
+      - "8081:8081"
+      - "3478:3478"
+    volumes:
+     - /opt/unifi/lib:/var/lib/unifi
+     - /opt/unifi/log:/var/log/unifi
+     - /opt/unifi/run:/var/run/unifi
+     - /opt/unifi/data:/opt/unifi/data:rw
+    network_mode: "host"
+    restart: always
